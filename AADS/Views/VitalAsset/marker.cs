@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AADS.Views.VitalAsset
+{
+    public partial class marker : UserControl
+    {
+        private double lat;
+        private double lng;
+        public marker()
+        {
+            InitializeComponent();
+            txtPointLat.Text = lat.ToString();
+            txtPointLng.Text = lng.ToString();
+        }
+
+        private void marker_Load(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}
