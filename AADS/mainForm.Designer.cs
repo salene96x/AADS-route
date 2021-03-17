@@ -100,6 +100,7 @@ namespace AADS
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnLineRoute = new System.Windows.Forms.Button();
             this.panelVit = new System.Windows.Forms.Panel();
             this.lblVitProvince = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -118,8 +119,11 @@ namespace AADS
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.btnLine = new System.Windows.Forms.Button();
             this.btnVit = new System.Windows.Forms.Button();
             this.btnMarker = new System.Windows.Forms.Button();
+            this.btnCreateRoute = new System.Windows.Forms.Button();
+            this.rightPanel1 = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -149,6 +153,7 @@ namespace AADS
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.btnCreateRoute);
             this.panelTop.Controls.Add(this.button7);
             this.panelTop.Controls.Add(this.button6);
             this.panelTop.Controls.Add(this.labelName);
@@ -483,6 +488,7 @@ namespace AADS
             this.mainMap.TabIndex = 4;
             this.mainMap.Zoom = 0D;
             this.mainMap.OnMapZoomChanged += new GMap.NET.MapZoomChanged(this.mainMap_OnMapZoomChanged);
+            this.mainMap.Paint += new System.Windows.Forms.PaintEventHandler(this.mainMap_Paint);
             this.mainMap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseClick_1);
             // 
             // minMap1
@@ -1077,7 +1083,10 @@ namespace AADS
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.rightPanel1);
+            this.panel5.Controls.Add(this.btnLineRoute);
             this.panel5.Controls.Add(this.panelVit);
+            this.panel5.Controls.Add(this.btnLine);
             this.panel5.Controls.Add(this.btnVit);
             this.panel5.Controls.Add(this.btnMarker);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
@@ -1086,6 +1095,18 @@ namespace AADS
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(389, 616);
             this.panel5.TabIndex = 12;
+            // 
+            // btnLineRoute
+            // 
+            this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLineRoute.Location = new System.Drawing.Point(0, 228);
+            this.btnLineRoute.Name = "btnLineRoute";
+            this.btnLineRoute.Size = new System.Drawing.Size(389, 49);
+            this.btnLineRoute.TabIndex = 6;
+            this.btnLineRoute.Text = "Route";
+            this.btnLineRoute.UseVisualStyleBackColor = true;
+            this.btnLineRoute.Visible = false;
+            this.btnLineRoute.Click += new System.EventHandler(this.btnLineRoute_Click);
             // 
             // panelVit
             // 
@@ -1107,11 +1128,11 @@ namespace AADS
             this.panelVit.Controls.Add(this.label22);
             this.panelVit.Controls.Add(this.label21);
             this.panelVit.Controls.Add(this.label20);
-            this.panelVit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelVit.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelVit.Font = new System.Drawing.Font("TH SarabunPSK", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelVit.Location = new System.Drawing.Point(0, 98);
+            this.panelVit.Location = new System.Drawing.Point(0, 147);
             this.panelVit.Name = "panelVit";
-            this.panelVit.Size = new System.Drawing.Size(389, 518);
+            this.panelVit.Size = new System.Drawing.Size(389, 81);
             this.panelVit.TabIndex = 4;
             this.panelVit.Visible = false;
             // 
@@ -1213,9 +1234,9 @@ namespace AADS
             // btnVitConfirm
             // 
             this.btnVitConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnVitConfirm.Location = new System.Drawing.Point(0, 476);
+            this.btnVitConfirm.Location = new System.Drawing.Point(0, 45);
             this.btnVitConfirm.Name = "btnVitConfirm";
-            this.btnVitConfirm.Size = new System.Drawing.Size(385, 38);
+            this.btnVitConfirm.Size = new System.Drawing.Size(385, 32);
             this.btnVitConfirm.TabIndex = 7;
             this.btnVitConfirm.Text = "Confirm";
             this.btnVitConfirm.UseVisualStyleBackColor = true;
@@ -1278,6 +1299,17 @@ namespace AADS
             this.label20.TabIndex = 0;
             this.label20.Text = "Vital Asset Control Panel";
             // 
+            // btnLine
+            // 
+            this.btnLine.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLine.Location = new System.Drawing.Point(0, 98);
+            this.btnLine.Name = "btnLine";
+            this.btnLine.Size = new System.Drawing.Size(389, 49);
+            this.btnLine.TabIndex = 5;
+            this.btnLine.Text = "Line";
+            this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
+            // 
             // btnVit
             // 
             this.btnVit.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1300,6 +1332,28 @@ namespace AADS
             this.btnMarker.Text = "Marker";
             this.btnMarker.UseVisualStyleBackColor = true;
             this.btnMarker.Click += new System.EventHandler(this.btnMarker_Click);
+            // 
+            // btnCreateRoute
+            // 
+            this.btnCreateRoute.Location = new System.Drawing.Point(550, 21);
+            this.btnCreateRoute.Name = "btnCreateRoute";
+            this.btnCreateRoute.Size = new System.Drawing.Size(106, 38);
+            this.btnCreateRoute.TabIndex = 11;
+            this.btnCreateRoute.Text = "Create Line";
+            this.btnCreateRoute.UseVisualStyleBackColor = true;
+            this.btnCreateRoute.Click += new System.EventHandler(this.btnCreateRoute_Click);
+            // 
+            // rightPanel1
+            // 
+            this.rightPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel1.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel1.Location = new System.Drawing.Point(0, 277);
+            this.rightPanel1.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel1.Name = "rightPanel1";
+            this.rightPanel1.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel1.TabIndex = 18;
+            this.rightPanel1.Visible = false;
+            this.rightPanel1.Load += new System.EventHandler(this.rightPanel1_Load);
             // 
             // mainForm
             // 
@@ -1456,6 +1510,10 @@ namespace AADS
         private System.Windows.Forms.RadioButton rdbVitType3;
         private System.Windows.Forms.RadioButton rdbVitType2;
         private System.Windows.Forms.RadioButton rdbVitType1;
+        private System.Windows.Forms.Button btnLine;
+        private System.Windows.Forms.Button btnLineRoute;
+        private Views.Route.rightPanel rightPanel1;
+        private System.Windows.Forms.Button btnCreateRoute;
     }
 }
 

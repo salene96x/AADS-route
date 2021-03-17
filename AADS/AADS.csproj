@@ -313,6 +313,12 @@
     <Compile Include="Views\Route\main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Route\rightPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Route\rightPanel.Designer.cs">
+      <DependentUpon>rightPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TacticalMissonLog\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -448,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Route\main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Route\rightPanel.resx">
+      <DependentUpon>rightPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TacticalMissonLog\main.resx">
       <DependentUpon>main.cs</DependentUpon>

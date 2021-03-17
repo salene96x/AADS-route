@@ -48,6 +48,8 @@ namespace AADS
         bool minMapAutoZoom = false;
         MarkerAndPolygon markerAndPolygon;
         public RadarOverlay radarP;
+        private List<PointLatLng> pointsToMark = new List<PointLatLng>();
+        private bool lineClickCheck;
         public GMapOverlay GetOverlay(string Name)
         {
             return mainMap.Overlays.FirstOrDefault(x => x.Id == Name);
@@ -515,6 +517,7 @@ namespace AADS
             updateMinMap();
             updateCmbMapMode();
             cmbMapMode.SelectedIndex = 0;
+            //createRoute();
         }
         private void closeBox_Click(object sender, EventArgs e)
         {
@@ -523,7 +526,7 @@ namespace AADS
 
         private void maximizeBox_Click(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Maximized)
+            if (WindowState == FormWindowState.Maximized)
             {
                 WindowState = FormWindowState.Normal;
             }
@@ -580,7 +583,7 @@ namespace AADS
                 mainMap.MaxZoom = mode.MaxZoom;
             }
         }
-        
+
         private void button6_Click(object sender, EventArgs e)
         {
             tableName = "track";
@@ -616,14 +619,64 @@ namespace AADS
         }
         private int xPoint;
         private int yPoint;
-        private bool clickCheck;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            xPoint = e.X;
-            yPoint = e.Y;
-            clickCheck = true;
-        }
+            if (lineClickCheck)
+            {
+                xPoint = e.X;
+                yPoint = e.Y;
+                if (e.Button == MouseButtons.Left)
+                {
+                    createMarker(e.X, e.Y);
+                }
+            }
 
+
+
+            //clickCheck = true;
+        }
+        private static int counter = 1;
+        private void createMarker(int x, int y)
+        {
+            //string var = "lblPoint" + i.ToString();
+            var pointMarker = mainMap.FromLocalToLatLng(x, y);
+            GMapOverlay markers = new GMapOverlay("markers");
+            GMarkerGoogle marker = new GMarkerGoogle(pointMarker, GMarkerGoogleType.arrow);
+            markers.Markers.Add(marker);
+            mainMap.Overlays.Add(markers);
+            pointsToMark.Add(new PointLatLng(marker.Position.Lat, marker.Position.Lng));
+            createRoute();
+            mainMap.Zoom += 0.1;
+            mainMap.Zoom -= 0.1;
+            if (counter > 0)
+            {
+                if (counter < 6)
+                {
+                    if (counter == 1)
+                    {
+                        rightPanel1.setValueTextBox1(pointMarker.ToString());
+                    }
+                    else if (counter == 2)
+                    {
+                        rightPanel1.setValueTextBox2(pointMarker.ToString());
+                    }
+                    else if (counter == 3)
+                    {
+                        rightPanel1.setValueTextBox3(pointMarker.ToString());
+                    }
+                    else if (counter == 4)
+                    {
+                        rightPanel1.setValueTextBox4(pointMarker.ToString());
+                    }
+                    else if (counter == 5)
+                    {
+                        rightPanel1.setValueTextBox5(pointMarker.ToString());
+                    }
+                }
+            }
+            counter++;
+
+        }
         private void btnVit_Click(object sender, EventArgs e)
         {
             panelVit.Visible = true;
@@ -654,9 +707,65 @@ namespace AADS
                 mainMap.Overlays.Add(markers);
                 currentMarker.IsVisible = false;
             }
-            
-            
-            
+        }
+
+        private void mainMap_Paint(object sender, PaintEventArgs e)
+        {
+            Pen whitePen = new Pen(Color.White, 1);
+            e.Graphics.DrawLine(whitePen, 20.0F, 20.0F, 200.0F, 20.0F);
+
+            //PointF[] points = new PointF[8];
+            //points = pointFArr;
+
+        }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            btnLineRoute.Visible = true;
+            btnLineRoute.Location = btnLine.Location;
+        }
+
+        private void btnLineRoute_Click(object sender, EventArgs e)
+        {
+            panelVit.Visible = false;
+            rightPanel1.Visible = true;
+            lineClickCheck = true;
+        }
+
+        private void Q(object sender, EventArgs e)
+        {
+
+        }
+        private void btnCreateRoute_Click(object sender, EventArgs e)
+        {
+            createRoute();
+            mainMap.Zoom +=  0.1;
+            mainMap.Zoom -=  0.1;
+        }
+        private List<PointLatLng> testArr = new List<PointLatLng>();
+        void createRoute()
+        {
+            GMapRoute route = new GMapRoute(pointsToMark, "route");
+            GMapOverlay overlay = new GMapOverlay("route");
+            if (rightPanel1.colorCheck == "Red")
+            {
+                route.Stroke = new Pen(Brushes.Red, 2);
+            }
+            else if (rightPanel1.colorCheck == "Brown")
+            {
+                route.Stroke = new Pen(Brushes.Brown, 2);
+            }
+            else
+            {
+                route.Stroke = new Pen(Brushes.Blue, 2);
+            }
+            overlay.Routes.Add(route);
+            mainMap.Overlays.Add(overlay);
+        }
+
+        private void rightPanel1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
