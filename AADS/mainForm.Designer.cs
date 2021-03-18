@@ -122,8 +122,8 @@ namespace AADS
             this.btnLine = new System.Windows.Forms.Button();
             this.btnVit = new System.Windows.Forms.Button();
             this.btnMarker = new System.Windows.Forms.Button();
-            this.btnCreateRoute = new System.Windows.Forms.Button();
-            this.rightPanel1 = new AADS.Views.Route.rightPanel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -153,7 +153,7 @@ namespace AADS
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.btnCreateRoute);
+            this.panelTop.Controls.Add(this.button8);
             this.panelTop.Controls.Add(this.button7);
             this.panelTop.Controls.Add(this.button6);
             this.panelTop.Controls.Add(this.labelName);
@@ -1083,7 +1083,7 @@ namespace AADS
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.rightPanel1);
+            this.panel5.Controls.Add(this.rightPanel);
             this.panel5.Controls.Add(this.btnLineRoute);
             this.panel5.Controls.Add(this.panelVit);
             this.panel5.Controls.Add(this.btnLine);
@@ -1333,27 +1333,27 @@ namespace AADS
             this.btnMarker.UseVisualStyleBackColor = true;
             this.btnMarker.Click += new System.EventHandler(this.btnMarker_Click);
             // 
-            // btnCreateRoute
+            // button8
             // 
-            this.btnCreateRoute.Location = new System.Drawing.Point(550, 21);
-            this.btnCreateRoute.Name = "btnCreateRoute";
-            this.btnCreateRoute.Size = new System.Drawing.Size(106, 38);
-            this.btnCreateRoute.TabIndex = 11;
-            this.btnCreateRoute.Text = "Create Line";
-            this.btnCreateRoute.UseVisualStyleBackColor = true;
-            this.btnCreateRoute.Click += new System.EventHandler(this.btnCreateRoute_Click);
+            this.button8.Location = new System.Drawing.Point(514, 21);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(170, 34);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "Report Management";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
-            // rightPanel1
+            // rightPanel
             // 
-            this.rightPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel1.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPanel1.Location = new System.Drawing.Point(0, 277);
-            this.rightPanel1.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rightPanel1.Name = "rightPanel1";
-            this.rightPanel1.Size = new System.Drawing.Size(389, 770);
-            this.rightPanel1.TabIndex = 18;
-            this.rightPanel1.Visible = false;
-            this.rightPanel1.Load += new System.EventHandler(this.rightPanel1_Load);
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel.Location = new System.Drawing.Point(0, 277);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel.TabIndex = 18;
+            this.rightPanel.Visible = false;
+            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
             // 
             // mainForm
             // 
@@ -1512,8 +1512,8 @@ namespace AADS
         private System.Windows.Forms.RadioButton rdbVitType1;
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnLineRoute;
-        private Views.Route.rightPanel rightPanel1;
-        private System.Windows.Forms.Button btnCreateRoute;
+        private Views.Route.rightPanel rightPanel;
+        private System.Windows.Forms.Button button8;
     }
 }
 

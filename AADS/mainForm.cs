@@ -636,45 +636,22 @@ namespace AADS
             //clickCheck = true;
         }
         private static int counter = 1;
+        private List<GMarkerGoogle> markerArr = new List<GMarkerGoogle>();
+        GMapOverlay markers = new GMapOverlay("markers");
         private void createMarker(int x, int y)
         {
             //string var = "lblPoint" + i.ToString();
             var pointMarker = mainMap.FromLocalToLatLng(x, y);
-            GMapOverlay markers = new GMapOverlay("markers");
+            
             GMarkerGoogle marker = new GMarkerGoogle(pointMarker, GMarkerGoogleType.arrow);
+            markerArr.Add(marker);
             markers.Markers.Add(marker);
             mainMap.Overlays.Add(markers);
             pointsToMark.Add(new PointLatLng(marker.Position.Lat, marker.Position.Lng));
             createRoute();
-            mainMap.Zoom += 0.1;
-            mainMap.Zoom -= 0.1;
-            if (counter > 0)
-            {
-                if (counter < 6)
-                {
-                    if (counter == 1)
-                    {
-                        rightPanel1.setValueTextBox1(pointMarker.ToString());
-                    }
-                    else if (counter == 2)
-                    {
-                        rightPanel1.setValueTextBox2(pointMarker.ToString());
-                    }
-                    else if (counter == 3)
-                    {
-                        rightPanel1.setValueTextBox3(pointMarker.ToString());
-                    }
-                    else if (counter == 4)
-                    {
-                        rightPanel1.setValueTextBox4(pointMarker.ToString());
-                    }
-                    else if (counter == 5)
-                    {
-                        rightPanel1.setValueTextBox5(pointMarker.ToString());
-                    }
-                }
-            }
-            counter++;
+            updateMap();
+            rightPanel.points.Add(pointMarker.ToString());
+            rightPanel.setListBox();
 
         }
         private void btnVit_Click(object sender, EventArgs e)
@@ -728,7 +705,7 @@ namespace AADS
         private void btnLineRoute_Click(object sender, EventArgs e)
         {
             panelVit.Visible = false;
-            rightPanel1.Visible = true;
+            rightPanel.Visible = true;
             lineClickCheck = true;
         }
 
@@ -739,33 +716,62 @@ namespace AADS
         private void btnCreateRoute_Click(object sender, EventArgs e)
         {
             createRoute();
-            mainMap.Zoom +=  0.1;
-            mainMap.Zoom -=  0.1;
+            updateMap();
+        }
+        void updateMap()
+        {
+            mainMap.Zoom += 0.0000001;
+            mainMap.Zoom -= 0.0000001;
         }
         private List<PointLatLng> testArr = new List<PointLatLng>();
+        private bool checkRouteSelectedType = false;
+        GMapOverlay overlay = new GMapOverlay("route");
+        private List<GMapRoute> routeArr = new List<GMapRoute>();
         void createRoute()
         {
             GMapRoute route = new GMapRoute(pointsToMark, "route");
-            GMapOverlay overlay = new GMapOverlay("route");
-            if (rightPanel1.colorCheck == "Red")
+            routeArr.Add(route);
+            if (rightPanel.colorCheck != "white")
             {
-                route.Stroke = new Pen(Brushes.Red, 2);
-            }
-            else if (rightPanel1.colorCheck == "Brown")
-            {
-                route.Stroke = new Pen(Brushes.Brown, 2);
-            }
-            else
-            {
-                route.Stroke = new Pen(Brushes.Blue, 2);
+                checkRouteSelectedType = true;
+                if (checkRouteSelectedType)
+                {
+                    if (rightPanel.colorCheck == "Red")
+                    {
+                        route.Stroke = new Pen(Brushes.Red, 2);
+                    }
+                    else if (rightPanel.colorCheck == "Brown")
+                    {
+                        route.Stroke = new Pen(Brushes.Brown, 2);
+                    }
+                    else if (rightPanel.colorCheck == "Deepblue")
+                    {
+                        route.Stroke = new Pen(Brushes.Blue, 2);
+                    }
+                }
             }
             overlay.Routes.Add(route);
             mainMap.Overlays.Add(overlay);
+            updateMap();
+           
         }
-
         private void rightPanel1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            foreach (var m in markerArr)
+            {
+                m.IsVisible = false;
+            }
+            foreach (var r in routeArr)
+            {
+                r.IsVisible = false;
+            }
+            rightPanel.reset(true);
+            pointsToMark.Clear();
         }
     }
 }
