@@ -32,6 +32,7 @@ namespace AADS
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Button();
@@ -100,6 +101,7 @@ namespace AADS
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.btnLineRoute = new System.Windows.Forms.Button();
             this.panelVit = new System.Windows.Forms.Panel();
             this.lblVitProvince = new System.Windows.Forms.Label();
@@ -122,8 +124,6 @@ namespace AADS
             this.btnLine = new System.Windows.Forms.Button();
             this.btnVit = new System.Windows.Forms.Button();
             this.btnMarker = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -168,6 +168,16 @@ namespace AADS
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1679, 70);
             this.panelTop.TabIndex = 0;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(514, 21);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(170, 34);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "Report Management";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // button7
             // 
@@ -1096,10 +1106,22 @@ namespace AADS
             this.panel5.Size = new System.Drawing.Size(389, 616);
             this.panel5.TabIndex = 12;
             // 
+            // rightPanel
+            // 
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel.Location = new System.Drawing.Point(0, 697);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel.TabIndex = 18;
+            this.rightPanel.Visible = false;
+            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
+            // 
             // btnLineRoute
             // 
             this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLineRoute.Location = new System.Drawing.Point(0, 228);
+            this.btnLineRoute.Location = new System.Drawing.Point(0, 648);
             this.btnLineRoute.Name = "btnLineRoute";
             this.btnLineRoute.Size = new System.Drawing.Size(389, 49);
             this.btnLineRoute.TabIndex = 6;
@@ -1132,7 +1154,7 @@ namespace AADS
             this.panelVit.Font = new System.Drawing.Font("TH SarabunPSK", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelVit.Location = new System.Drawing.Point(0, 147);
             this.panelVit.Name = "panelVit";
-            this.panelVit.Size = new System.Drawing.Size(389, 81);
+            this.panelVit.Size = new System.Drawing.Size(389, 501);
             this.panelVit.TabIndex = 4;
             this.panelVit.Visible = false;
             // 
@@ -1234,7 +1256,7 @@ namespace AADS
             // btnVitConfirm
             // 
             this.btnVitConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnVitConfirm.Location = new System.Drawing.Point(0, 45);
+            this.btnVitConfirm.Location = new System.Drawing.Point(0, 465);
             this.btnVitConfirm.Name = "btnVitConfirm";
             this.btnVitConfirm.Size = new System.Drawing.Size(385, 32);
             this.btnVitConfirm.TabIndex = 7;
@@ -1332,28 +1354,6 @@ namespace AADS
             this.btnMarker.Text = "Marker";
             this.btnMarker.UseVisualStyleBackColor = true;
             this.btnMarker.Click += new System.EventHandler(this.btnMarker_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(514, 21);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(170, 34);
-            this.button8.TabIndex = 11;
-            this.button8.Text = "Report Management";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
-            // 
-            // rightPanel
-            // 
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPanel.Location = new System.Drawing.Point(0, 277);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(389, 770);
-            this.rightPanel.TabIndex = 18;
-            this.rightPanel.Visible = false;
-            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
             // 
             // mainForm
             // 
