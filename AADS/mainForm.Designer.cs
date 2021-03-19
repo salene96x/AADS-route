@@ -32,7 +32,6 @@ namespace AADS
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.panelTop = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Button();
@@ -101,7 +100,6 @@ namespace AADS
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.btnLineRoute = new System.Windows.Forms.Button();
             this.panelVit = new System.Windows.Forms.Panel();
             this.lblVitProvince = new System.Windows.Forms.Label();
@@ -124,6 +122,11 @@ namespace AADS
             this.btnLine = new System.Windows.Forms.Button();
             this.btnVit = new System.Windows.Forms.Button();
             this.btnMarker = new System.Windows.Forms.Button();
+            this.panelControlOptions = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -149,11 +152,11 @@ namespace AADS
             this.tableLayoutPanel14.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panelVit.SuspendLayout();
+            this.panelControlOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.button8);
             this.panelTop.Controls.Add(this.button7);
             this.panelTop.Controls.Add(this.button6);
             this.panelTop.Controls.Add(this.labelName);
@@ -168,16 +171,6 @@ namespace AADS
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(1679, 70);
             this.panelTop.TabIndex = 0;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(514, 21);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(170, 34);
-            this.button8.TabIndex = 11;
-            this.button8.Text = "Report Management";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // button7
             // 
@@ -1106,22 +1099,10 @@ namespace AADS
             this.panel5.Size = new System.Drawing.Size(389, 616);
             this.panel5.TabIndex = 12;
             // 
-            // rightPanel
-            // 
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPanel.Location = new System.Drawing.Point(0, 697);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(389, 770);
-            this.rightPanel.TabIndex = 18;
-            this.rightPanel.Visible = false;
-            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
-            // 
             // btnLineRoute
             // 
             this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLineRoute.Location = new System.Drawing.Point(0, 648);
+            this.btnLineRoute.Location = new System.Drawing.Point(0, 641);
             this.btnLineRoute.Name = "btnLineRoute";
             this.btnLineRoute.Size = new System.Drawing.Size(389, 49);
             this.btnLineRoute.TabIndex = 6;
@@ -1154,7 +1135,7 @@ namespace AADS
             this.panelVit.Font = new System.Drawing.Font("TH SarabunPSK", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelVit.Location = new System.Drawing.Point(0, 147);
             this.panelVit.Name = "panelVit";
-            this.panelVit.Size = new System.Drawing.Size(389, 501);
+            this.panelVit.Size = new System.Drawing.Size(389, 494);
             this.panelVit.TabIndex = 4;
             this.panelVit.Visible = false;
             // 
@@ -1256,7 +1237,7 @@ namespace AADS
             // btnVitConfirm
             // 
             this.btnVitConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnVitConfirm.Location = new System.Drawing.Point(0, 465);
+            this.btnVitConfirm.Location = new System.Drawing.Point(0, 458);
             this.btnVitConfirm.Name = "btnVitConfirm";
             this.btnVitConfirm.Size = new System.Drawing.Size(385, 32);
             this.btnVitConfirm.TabIndex = 7;
@@ -1355,6 +1336,65 @@ namespace AADS
             this.btnMarker.UseVisualStyleBackColor = true;
             this.btnMarker.Click += new System.EventHandler(this.btnMarker_Click);
             // 
+            // panelControlOptions
+            // 
+            this.panelControlOptions.Controls.Add(this.btnReset);
+            this.panelControlOptions.Controls.Add(this.btnStop);
+            this.panelControlOptions.Controls.Add(this.btnAdd);
+            this.panelControlOptions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControlOptions.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelControlOptions.Location = new System.Drawing.Point(278, 538);
+            this.panelControlOptions.Name = "panelControlOptions";
+            this.panelControlOptions.Size = new System.Drawing.Size(1012, 148);
+            this.panelControlOptions.TabIndex = 13;
+            this.panelControlOptions.Visible = false;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(1012, 49);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Continue Marking";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStop.Location = new System.Drawing.Point(0, 49);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(1012, 49);
+            this.btnStop.TabIndex = 7;
+            this.btnStop.Text = "Stop Marking";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.AutoEllipsis = true;
+            this.btnReset.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReset.Location = new System.Drawing.Point(0, 98);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(1012, 49);
+            this.btnReset.TabIndex = 8;
+            this.btnReset.Text = "Reset Marking";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // rightPanel
+            // 
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel.Location = new System.Drawing.Point(0, 690);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel.TabIndex = 18;
+            this.rightPanel.Visible = false;
+            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -1362,6 +1402,7 @@ namespace AADS
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1679, 756);
             this.ControlBox = false;
+            this.Controls.Add(this.panelControlOptions);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.mainMap);
             this.Controls.Add(this.panel2);
@@ -1415,6 +1456,7 @@ namespace AADS
             this.panel5.ResumeLayout(false);
             this.panelVit.ResumeLayout(false);
             this.panelVit.PerformLayout();
+            this.panelControlOptions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1513,7 +1555,10 @@ namespace AADS
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnLineRoute;
         private Views.Route.rightPanel rightPanel;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Panel panelControlOptions;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
 

@@ -625,6 +625,7 @@ namespace AADS
             {
                 xPoint = e.X;
                 yPoint = e.Y;
+                
                 if (e.Button == MouseButtons.Left)
                 {
                     createMarker(e.X, e.Y);
@@ -704,15 +705,13 @@ namespace AADS
 
         private void btnLineRoute_Click(object sender, EventArgs e)
         {
+            btnLineRoute.Visible = false;
             panelVit.Visible = false;
             rightPanel.Visible = true;
-            lineClickCheck = true;
+            lineClickCheck = rightPanel.addClick;
+            panelControlOptions.Visible = true;
         }
 
-        private void Q(object sender, EventArgs e)
-        {
-
-        }
         private void btnCreateRoute_Click(object sender, EventArgs e)
         {
             createRoute();
@@ -762,16 +761,42 @@ namespace AADS
 
         private void button8_Click_1(object sender, EventArgs e)
         {
+            
+        }
+        void reset()
+        {
             foreach (var m in markerArr)
             {
                 m.IsVisible = false;
+                mainMap.Overlays.Remove(overlay);
             }
             foreach (var r in routeArr)
             {
                 r.IsVisible = false;
+                mainMap.Overlays.Remove(markers);
             }
             rightPanel.reset(true);
             pointsToMark.Clear();
+            lineClickCheck = false;
+        }
+        private void btnStopMarking_Click(object sender, EventArgs e)
+        {
+            lineClickCheck = false;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            lineClickCheck = false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            lineClickCheck = true;
         }
     }
 }

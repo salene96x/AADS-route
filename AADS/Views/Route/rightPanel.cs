@@ -17,8 +17,9 @@ namespace AADS.Views.Route
         public string colorCheck;
         public string test;
         public List<string> points = new List<string>();
-        private static int counter;
+        private static int counter = 1;
         public bool resetCheck = false;
+        public bool addClick = true;
         public List<GMarkerGoogle> arr = new List<GMarkerGoogle>();
         public rightPanel()
         {
@@ -47,7 +48,7 @@ namespace AADS.Views.Route
         }
         public void setListBox()
         {
-            listBox1.Items.Add("Point " + counter.ToString() + "= " + points[counter]);
+            listBox1.Items.Add("Point " + counter.ToString() + "= " + points[counter-1]);
             counter++;
         }
 
@@ -62,6 +63,21 @@ namespace AADS.Views.Route
                 listBox1.Items.Clear();
                 counter = 0;
             }
+        }
+
+        private void btnMark_Click(object sender, EventArgs e)
+        {
+            addClick = true;
+        }
+
+        private void btnResetMarker_Click(object sender, EventArgs e)
+        {
+            resetCheck = true;
+        }
+
+        private void btnStopMarking_Click(object sender, EventArgs e)
+        {
+            addClick = false;
         }
     }
 }
