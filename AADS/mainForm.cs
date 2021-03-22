@@ -668,6 +668,11 @@ namespace AADS
         private void btnMarker_Click(object sender, EventArgs e)
         {
             btnVit.Visible = true;
+            if (btnLine.Visible)
+            {
+                btnLine.Visible = false;
+                btnLineRoute.Visible = false;
+            }
         }
         private void btnVit_Click_1(object sender, EventArgs e)
         {
@@ -699,6 +704,9 @@ namespace AADS
 
         private void btnLine_Click(object sender, EventArgs e)
         {
+            btnLine.Location = btnMarker.Location;
+            btnMarker.Visible = false;
+            btnVit.Visible = false;
             btnLineRoute.Visible = true;
             btnLineRoute.Location = btnLine.Location;
         }

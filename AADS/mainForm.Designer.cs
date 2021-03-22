@@ -100,6 +100,7 @@ namespace AADS
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.btnLineRoute = new System.Windows.Forms.Button();
             this.panelVit = new System.Windows.Forms.Panel();
             this.lblVitProvince = new System.Windows.Forms.Label();
@@ -123,10 +124,9 @@ namespace AADS
             this.btnVit = new System.Windows.Forms.Button();
             this.btnMarker = new System.Windows.Forms.Button();
             this.panelControlOptions = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.rightPanel = new AADS.Views.Route.rightPanel();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -1099,6 +1099,18 @@ namespace AADS
             this.panel5.Size = new System.Drawing.Size(389, 616);
             this.panel5.TabIndex = 12;
             // 
+            // rightPanel
+            // 
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel.Location = new System.Drawing.Point(0, 690);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel.TabIndex = 18;
+            this.rightPanel.Visible = false;
+            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
+            // 
             // btnLineRoute
             // 
             this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1142,7 +1154,7 @@ namespace AADS
             // lblVitProvince
             // 
             this.lblVitProvince.AutoSize = true;
-            this.lblVitProvince.Location = new System.Drawing.Point(171, 429);
+            this.lblVitProvince.Location = new System.Drawing.Point(171, 403);
             this.lblVitProvince.Name = "lblVitProvince";
             this.lblVitProvince.Size = new System.Drawing.Size(60, 26);
             this.lblVitProvince.TabIndex = 17;
@@ -1151,7 +1163,7 @@ namespace AADS
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(85, 429);
+            this.label25.Location = new System.Drawing.Point(85, 403);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(80, 26);
             this.label25.TabIndex = 16;
@@ -1160,7 +1172,7 @@ namespace AADS
             // rdbVitType4
             // 
             this.rdbVitType4.AutoSize = true;
-            this.rdbVitType4.Location = new System.Drawing.Point(169, 385);
+            this.rdbVitType4.Location = new System.Drawing.Point(169, 359);
             this.rdbVitType4.Name = "rdbVitType4";
             this.rdbVitType4.Size = new System.Drawing.Size(86, 30);
             this.rdbVitType4.TabIndex = 15;
@@ -1171,7 +1183,7 @@ namespace AADS
             // rdbVitType3
             // 
             this.rdbVitType3.AutoSize = true;
-            this.rdbVitType3.Location = new System.Drawing.Point(169, 349);
+            this.rdbVitType3.Location = new System.Drawing.Point(169, 323);
             this.rdbVitType3.Name = "rdbVitType3";
             this.rdbVitType3.Size = new System.Drawing.Size(77, 30);
             this.rdbVitType3.TabIndex = 14;
@@ -1182,7 +1194,7 @@ namespace AADS
             // rdbVitType2
             // 
             this.rdbVitType2.AutoSize = true;
-            this.rdbVitType2.Location = new System.Drawing.Point(169, 313);
+            this.rdbVitType2.Location = new System.Drawing.Point(169, 287);
             this.rdbVitType2.Name = "rdbVitType2";
             this.rdbVitType2.Size = new System.Drawing.Size(72, 30);
             this.rdbVitType2.TabIndex = 13;
@@ -1193,7 +1205,7 @@ namespace AADS
             // rdbVitType1
             // 
             this.rdbVitType1.AutoSize = true;
-            this.rdbVitType1.Location = new System.Drawing.Point(169, 277);
+            this.rdbVitType1.Location = new System.Drawing.Point(169, 251);
             this.rdbVitType1.Name = "rdbVitType1";
             this.rdbVitType1.Size = new System.Drawing.Size(107, 30);
             this.rdbVitType1.TabIndex = 12;
@@ -1204,7 +1216,7 @@ namespace AADS
             // rdbVitMI
             // 
             this.rdbVitMI.AutoSize = true;
-            this.rdbVitMI.Location = new System.Drawing.Point(221, 86);
+            this.rdbVitMI.Location = new System.Drawing.Point(221, 60);
             this.rdbVitMI.Name = "rdbVitMI";
             this.rdbVitMI.Size = new System.Drawing.Size(106, 30);
             this.rdbVitMI.TabIndex = 11;
@@ -1216,7 +1228,7 @@ namespace AADS
             // rdbVitClick2M
             // 
             this.rdbVitClick2M.AutoSize = true;
-            this.rdbVitClick2M.Location = new System.Drawing.Point(100, 86);
+            this.rdbVitClick2M.Location = new System.Drawing.Point(100, 60);
             this.rdbVitClick2M.Name = "rdbVitClick2M";
             this.rdbVitClick2M.Size = new System.Drawing.Size(105, 30);
             this.rdbVitClick2M.TabIndex = 10;
@@ -1228,7 +1240,7 @@ namespace AADS
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(83, 279);
+            this.label24.Location = new System.Drawing.Point(83, 253);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(80, 26);
             this.label24.TabIndex = 8;
@@ -1246,21 +1258,21 @@ namespace AADS
             // 
             // txtVitLng
             // 
-            this.txtVitLng.Location = new System.Drawing.Point(169, 226);
+            this.txtVitLng.Location = new System.Drawing.Point(169, 200);
             this.txtVitLng.Name = "txtVitLng";
             this.txtVitLng.Size = new System.Drawing.Size(185, 32);
             this.txtVitLng.TabIndex = 6;
             // 
             // txtVitLat
             // 
-            this.txtVitLat.Location = new System.Drawing.Point(169, 174);
+            this.txtVitLat.Location = new System.Drawing.Point(169, 148);
             this.txtVitLat.Name = "txtVitLat";
             this.txtVitLat.Size = new System.Drawing.Size(185, 32);
             this.txtVitLat.TabIndex = 5;
             // 
             // txtVitName
             // 
-            this.txtVitName.Location = new System.Drawing.Point(169, 122);
+            this.txtVitName.Location = new System.Drawing.Point(169, 96);
             this.txtVitName.Name = "txtVitName";
             this.txtVitName.Size = new System.Drawing.Size(185, 32);
             this.txtVitName.TabIndex = 4;
@@ -1268,7 +1280,7 @@ namespace AADS
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(26, 229);
+            this.label23.Location = new System.Drawing.Point(26, 203);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(137, 26);
             this.label23.TabIndex = 3;
@@ -1277,7 +1289,7 @@ namespace AADS
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(38, 177);
+            this.label22.Location = new System.Drawing.Point(38, 151);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(125, 26);
             this.label22.TabIndex = 2;
@@ -1286,7 +1298,7 @@ namespace AADS
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(113, 128);
+            this.label21.Location = new System.Drawing.Point(113, 102);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(52, 26);
             this.label21.TabIndex = 1;
@@ -1296,7 +1308,7 @@ namespace AADS
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("TH SarabunPSK", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(105, 51);
+            this.label20.Location = new System.Drawing.Point(105, 25);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(217, 36);
             this.label20.TabIndex = 0;
@@ -1349,28 +1361,6 @@ namespace AADS
             this.panelControlOptions.TabIndex = 13;
             this.panelControlOptions.Visible = false;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.Location = new System.Drawing.Point(0, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(1012, 49);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Continue Marking";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStop.Location = new System.Drawing.Point(0, 49);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(1012, 49);
-            this.btnStop.TabIndex = 7;
-            this.btnStop.Text = "Stop Marking";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
             // btnReset
             // 
             this.btnReset.AutoEllipsis = true;
@@ -1383,17 +1373,27 @@ namespace AADS
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // rightPanel
+            // btnStop
             // 
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPanel.Location = new System.Drawing.Point(0, 690);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(389, 770);
-            this.rightPanel.TabIndex = 18;
-            this.rightPanel.Visible = false;
-            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
+            this.btnStop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStop.Location = new System.Drawing.Point(0, 49);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(1012, 49);
+            this.btnStop.TabIndex = 7;
+            this.btnStop.Text = "Stop Marking";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(1012, 49);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Continue Marking";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // mainForm
             // 
