@@ -126,7 +126,6 @@ namespace AADS
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.rightPanel1 = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -1101,7 +1100,7 @@ namespace AADS
             // btnLineRoute
             // 
             this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLineRoute.Location = new System.Drawing.Point(0, 616);
+            this.btnLineRoute.Location = new System.Drawing.Point(0, 641);
             this.btnLineRoute.Name = "btnLineRoute";
             this.btnLineRoute.Size = new System.Drawing.Size(389, 49);
             this.btnLineRoute.TabIndex = 6;
@@ -1113,7 +1112,6 @@ namespace AADS
             // panelVit
             // 
             this.panelVit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelVit.Controls.Add(this.rightPanel1);
             this.panelVit.Controls.Add(this.lblVitProvince);
             this.panelVit.Controls.Add(this.label25);
             this.panelVit.Controls.Add(this.rdbVitType4);
@@ -1135,7 +1133,7 @@ namespace AADS
             this.panelVit.Font = new System.Drawing.Font("TH SarabunPSK", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelVit.Location = new System.Drawing.Point(0, 147);
             this.panelVit.Name = "panelVit";
-            this.panelVit.Size = new System.Drawing.Size(389, 469);
+            this.panelVit.Size = new System.Drawing.Size(389, 494);
             this.panelVit.TabIndex = 4;
             this.panelVit.Visible = false;
             // 
@@ -1237,7 +1235,7 @@ namespace AADS
             // btnVitConfirm
             // 
             this.btnVitConfirm.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnVitConfirm.Location = new System.Drawing.Point(0, 433);
+            this.btnVitConfirm.Location = new System.Drawing.Point(0, 458);
             this.btnVitConfirm.Name = "btnVitConfirm";
             this.btnVitConfirm.Size = new System.Drawing.Size(385, 32);
             this.btnVitConfirm.TabIndex = 7;
@@ -1382,14 +1380,6 @@ namespace AADS
             this.btnAdd.Text = "Continue Marking";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // rightPanel1
-            // 
-            this.rightPanel1.Location = new System.Drawing.Point(-24, -4);
-            this.rightPanel1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.rightPanel1.Name = "rightPanel1";
-            this.rightPanel1.Size = new System.Drawing.Size(411, 571);
-            this.rightPanel1.TabIndex = 18;
             // 
             // mainForm
             // 
@@ -1555,7 +1545,6 @@ namespace AADS
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnAdd;
-        private Views.Route.rightPanel rightPanel1;
     }
 }
 

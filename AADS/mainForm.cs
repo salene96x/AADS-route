@@ -711,12 +711,11 @@ namespace AADS
             btnLineRoute.Location = btnLine.Location;
         }
 
-        private void btnLineRoute_Click(object sender, EventArgs e) 
+        private void btnLineRoute_Click(object sender, EventArgs e)
         {
-            rightPanel = rightPanel;
             btnLineRoute.Visible = false;
             panelVit.Visible = false;
-            rightPanel1.Visible = true;
+            rightPanel.Visible = true;
             lineClickCheck = rightPanel.addClick;
             panelControlOptions.Visible = true;
         }
