@@ -18,6 +18,7 @@ namespace AADS.Views.Route
         public string test;
         public List<string> points = new List<string>();
         private static int counter = 1;
+        public int counter2 = 0;
         public bool resetCheck = false;
         public bool addClick = true;
         public List<GMarkerGoogle> arr = new List<GMarkerGoogle>();
@@ -61,7 +62,7 @@ namespace AADS.Views.Route
             {
                 points.Clear();
                 listBox1.Items.Clear();
-                counter = 0;
+                counter = 1;
             }
         }
 
