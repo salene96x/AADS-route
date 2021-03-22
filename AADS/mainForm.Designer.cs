@@ -490,6 +490,8 @@ namespace AADS
             this.mainMap.Size = new System.Drawing.Size(1401, 616);
             this.mainMap.TabIndex = 4;
             this.mainMap.Zoom = 0D;
+            this.mainMap.OnPolygonClick += new GMap.NET.WindowsForms.PolygonClick(this.mainMap_OnPolygonClick);
+            this.mainMap.OnRouteClick += new GMap.NET.WindowsForms.RouteClick(this.mainMap_OnRouteClick);
             this.mainMap.OnMapZoomChanged += new GMap.NET.MapZoomChanged(this.mainMap_OnMapZoomChanged);
             this.mainMap.Paint += new System.Windows.Forms.PaintEventHandler(this.mainMap_Paint);
             this.mainMap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseClick_1);

@@ -636,9 +636,9 @@ namespace AADS
 
             //clickCheck = true;
         }
-        private static int counter = 1;
         private List<GMarkerGoogle> markerArr = new List<GMarkerGoogle>();
         GMapOverlay markers = new GMapOverlay("markers");
+        private bool vitSelected = false;
         private void createMarker(int x, int y)
         {
             //string var = "lblPoint" + i.ToString();
@@ -676,12 +676,12 @@ namespace AADS
         }
         private void btnVit_Click_1(object sender, EventArgs e)
         {
-            double prevLat = currentMarker.Position.Lat;
             GMapOverlay markers = new GMapOverlay("markers");
             GMarkerGoogle marker;
             panelVit.Visible = true;
             if (rdbVitClick2M.Checked)
             {
+                updateMap();
                 var point = mainMap.FromLocalToLatLng(xPoint, yPoint);
                 txtVitLat.Text = currentMarker.Position.Lat.ToString();
                 txtVitLng.Text = currentMarker.Position.Lng.ToString();
@@ -694,11 +694,6 @@ namespace AADS
 
         private void mainMap_Paint(object sender, PaintEventArgs e)
         {
-            Pen whitePen = new Pen(Color.White, 1);
-            e.Graphics.DrawLine(whitePen, 20.0F, 20.0F, 200.0F, 20.0F);
-
-            //PointF[] points = new PointF[8];
-            //points = pointFArr;
 
         }
 
@@ -745,22 +740,22 @@ namespace AADS
                 {
                     if (rightPanel.colorCheck == "Red")
                     {
-                        route.Stroke = new Pen(Brushes.Red, 2);
+                        route.Stroke = new Pen(Brushes.Red, 1);
                     }
                     else if (rightPanel.colorCheck == "Brown")
                     {
-                        route.Stroke = new Pen(Brushes.Brown, 2);
+                        route.Stroke = new Pen(Brushes.Brown, 1);
                     }
                     else if (rightPanel.colorCheck == "Deepblue")
                     {
-                        route.Stroke = new Pen(Brushes.Blue, 2);
+                        route.Stroke = new Pen(Brushes.Blue, 1);
                     }
                 }
             }
+            route.IsHitTestVisible = true;
             overlay.Routes.Add(route);
             mainMap.Overlays.Add(overlay);
             updateMap();
-           
         }
         private void rightPanel1_Load(object sender, EventArgs e)
         {
@@ -805,6 +800,44 @@ namespace AADS
         private void btnAdd_Click(object sender, EventArgs e)
         {
             lineClickCheck = true;
+        }
+
+        private void mainMap_OnRouteClick(GMapRoute item, MouseEventArgs e)
+        {
+            rightPanel.Visible = true;
+        }
+
+        //testing polygon and route
+        void testRoute()
+        {
+            List<PointLatLng> testPoints = new List<PointLatLng>();
+            testPoints.Add(new PointLatLng(13.999, 100.30));
+            testPoints.Add(new PointLatLng(12.999, 100.30));
+            GMapRoute route = new GMapRoute(testPoints,"test");
+            GMapOverlay routeOverlay = new GMapOverlay("route");
+            routeOverlay.Routes.Add(route);
+            mainMap.Overlays.Add(routeOverlay);
+        }
+
+        void testPolygon()
+        {
+
+            List<PointLatLng> points = new List<PointLatLng>();
+            points.Add(new PointLatLng(14.999, 85.1));
+            points.Add(new PointLatLng(13.999, 90.1));
+            points.Add(new PointLatLng(11.999, 102.1));
+            points.Add(new PointLatLng(18.999, 101.1));
+            GMapPolygon polygon = new GMapPolygon(points, "testPoly");
+            GMapOverlay polyOverlay = new GMapOverlay("polygon");
+            polygon.IsHitTestVisible = true;
+            polyOverlay.Polygons.Add(polygon);
+            mainMap.Overlays.Add(polyOverlay);
+            updateMap();
+        }
+
+        private void mainMap_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
+        {
+            MessageBox.Show("This polygon has been clicked");
         }
     }
 }
