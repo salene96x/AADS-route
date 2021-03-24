@@ -756,25 +756,22 @@ namespace AADS
         {
             GMapRoute route = new GMapRoute(pointsToMark, "route");
             routeArr.Add(route);
-            if (rightPanel.colorCheck != "white")
-            {
                 checkRouteSelectedType = true;
-                if (checkRouteSelectedType)
+            if (checkRouteSelectedType)
+            {
+                if (rightPanel.colorCheck == "Red")
                 {
-                    if (rightPanel.colorCheck == "Red")
-                    {
-                        route.Stroke = new Pen(Brushes.Red, 1);
-                    }
-                    else if (rightPanel.colorCheck == "Brown")
-                    {
-                        route.Stroke = new Pen(Brushes.Brown, 1);
-                    }
-                    else if (rightPanel.colorCheck == "Deepblue")
-                    {
-                        route.Stroke = new Pen(Brushes.Blue, 1);
-                    }
+                    route.Stroke = new Pen(Brushes.Red, 1);
                 }
-            }
+                else if (rightPanel.colorCheck == "Brown")
+                {
+                    route.Stroke = new Pen(Brushes.Brown, 1);
+                }
+                else if (rightPanel.colorCheck == "Deepblue")
+                {
+                    route.Stroke = new Pen(Brushes.Blue, 1);
+                }
+            } 
             route.IsHitTestVisible = true;
             overlay.Routes.Add(route);
             mainMap.Overlays.Add(overlay);
