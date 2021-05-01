@@ -631,13 +631,6 @@ namespace AADS
                     createMarker(e.X, e.Y);
                 }
             }
-            else if (vitSelected)
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    createSingleMark(e.X, e.Y);
-                }
-            }
 
 
 
@@ -648,7 +641,9 @@ namespace AADS
         private bool vitSelected = false;
         private void createMarker(int x, int y)
         {
+            //string var = "lblPoint" + i.ToString();
             var pointMarker = mainMap.FromLocalToLatLng(x, y);
+            
             GMarkerGoogle marker = new GMarkerGoogle(pointMarker, GMarkerGoogleType.arrow);
             markerArr.Add(marker);
             markers.Markers.Add(marker);
@@ -679,39 +674,21 @@ namespace AADS
                 btnLineRoute.Visible = false;
             }
         }
-        private bool vitOptionMarker;
-        void createSingleMark(int x, int y)
-        {
-            currentMarker.IsVisible = false;
-            if (vitOptionMarker) 
-            {
-                var point = mainMap.FromLocalToLatLng(x, y);
-                GMapOverlay markerOvl = new GMapOverlay("vitMarker");
-                GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.orange_small);
-                markerOvl.Markers.Add(vitMarker);
-                mainMap.Overlays.Add(markerOvl);
-                updateMap();
-                vitSelected = false;
-                currentMarker.IsVisible = false;
-                txtVitLat.Text = point.Lat.ToString();
-                txtVitLng.Text = point.Lng.ToString();
-            }
-
-        }
         private void btnVit_Click_1(object sender, EventArgs e)
         {
-            vitSelected = true;
+            GMapOverlay markers = new GMapOverlay("markers");
+            GMarkerGoogle marker;
             panelVit.Visible = true;
-        }
-        private void rdbVitCheckChanged (object sender, EventArgs e)
-        {
             if (rdbVitClick2M.Checked)
             {
-                vitOptionMarker = true;
-            }
-            else
-            {
-                vitOptionMarker = false;
+                updateMap();
+                var point = mainMap.FromLocalToLatLng(xPoint, yPoint);
+                txtVitLat.Text = currentMarker.Position.Lat.ToString();
+                txtVitLng.Text = currentMarker.Position.Lng.ToString();
+                marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
+                markers.Markers.Add(marker);
+                mainMap.Overlays.Add(markers);
+                currentMarker.IsVisible = false;
             }
         }
 

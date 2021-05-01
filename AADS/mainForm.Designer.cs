@@ -100,6 +100,7 @@ namespace AADS
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.btnLineRoute = new System.Windows.Forms.Button();
             this.panelVit = new System.Windows.Forms.Panel();
             this.lblVitProvince = new System.Windows.Forms.Label();
@@ -126,7 +127,6 @@ namespace AADS
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.rightPanel = new AADS.Views.Route.rightPanel();
             this.panelTop.SuspendLayout();
             this.datePanel.SuspendLayout();
             this.controlLayout.SuspendLayout();
@@ -1101,6 +1101,18 @@ namespace AADS
             this.panel5.Size = new System.Drawing.Size(389, 616);
             this.panel5.TabIndex = 12;
             // 
+            // rightPanel
+            // 
+            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightPanel.Location = new System.Drawing.Point(0, 690);
+            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            this.rightPanel.Name = "rightPanel";
+            this.rightPanel.Size = new System.Drawing.Size(389, 770);
+            this.rightPanel.TabIndex = 18;
+            this.rightPanel.Visible = false;
+            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
+            // 
             // btnLineRoute
             // 
             this.btnLineRoute.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1225,7 +1237,7 @@ namespace AADS
             this.rdbVitClick2M.TabStop = true;
             this.rdbVitClick2M.Text = "Click to Mark";
             this.rdbVitClick2M.UseVisualStyleBackColor = true;
-            this.rdbVitClick2M.CheckedChanged += new System.EventHandler(this.rdbVitCheckChanged);
+            this.rdbVitClick2M.CheckedChanged += new System.EventHandler(this.btnVit_Click_1);
             // 
             // label24
             // 
@@ -1384,18 +1396,6 @@ namespace AADS
             this.btnAdd.Text = "Continue Marking";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // rightPanel
-            // 
-            this.rightPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rightPanel.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightPanel.Location = new System.Drawing.Point(0, 690);
-            this.rightPanel.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.rightPanel.Name = "rightPanel";
-            this.rightPanel.Size = new System.Drawing.Size(389, 770);
-            this.rightPanel.TabIndex = 18;
-            this.rightPanel.Visible = false;
-            this.rightPanel.Load += new System.EventHandler(this.rightPanel1_Load);
             // 
             // mainForm
             // 
